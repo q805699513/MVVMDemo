@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Versions.compileSdkVersion
+    buildToolsVersion Versions.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.longsh.mvvm"
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.compileSdkVersion
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures{
+        dataBinding = true
+        // for view binding :
+        // viewBinding = true
+    }
+}
+
+dependencies {
+    androidTestImplementation Libs.junit
+    androidTestImplementation Libs.espressoCore
+    testImplementation Libs.junit
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation Libs.kotlinStdlib
+    implementation Libs.coreKtx
+    implementation Libs.appcompat
+    implementation Libs.constraintLayout
+    implementation Libs.lifecycleViewModelKtx
+    implementation Libs.retrofit
+    implementation Libs.retrofitConverterGson
+    implementation Libs.okhttp
+    implementation Libs.okhttpLoggingInterceptor
+    implementation Libs.recyclerview
+    implementation Libs.brvah
+}
