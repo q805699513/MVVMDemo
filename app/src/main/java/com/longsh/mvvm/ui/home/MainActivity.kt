@@ -21,11 +21,11 @@ class MainActivity : BaseActivity<MainModel, ActivityMainBinding>() {
         dataBinding.recyclerView.layoutManager = LinearLayoutManager(this)
         val testAdapter  = TestAdapter(this)
         dataBinding.recyclerView.adapter = testAdapter
-        vm.listData.observe(this,{
-            Log.d("MainActivityLog","size = ${it.size}")
+        vm.listData.observe(this) {
+            Log.d("MainActivityLog", "size = ${it.size}")
             testAdapter.setList(it)
             testAdapter.notifyDataSetChanged()
-        })
+        }
     }
 
     override fun initData() {

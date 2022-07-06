@@ -15,3 +15,4 @@ open class BaseBean {
         get() = this.errorCode == 600100
 
 }
+    

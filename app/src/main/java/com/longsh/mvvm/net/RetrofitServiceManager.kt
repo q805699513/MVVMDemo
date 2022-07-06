@@ -27,11 +27,7 @@ class RetrofitServiceManager private constructor() {
     private val mRetrofit: Retrofit
 
     init {
-        val logging = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
-            override fun log(message: String) {
-                Log.d("RetrofitLog", message + "")
-            }
-        })
+        val logging = HttpLoggingInterceptor { message -> Log.d("RetrofitLog", message + "") }
         logging.level = HttpLoggingInterceptor.Level.BODY
         val builder = OkHttpClient.Builder()
             .addInterceptor(logging)
